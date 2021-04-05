@@ -1,0 +1,86 @@
+﻿<Window x:Class="Normalize.CorrelationAnalysisWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Normalize"
+        mc:Ignorable="d"
+        Title="Корреляционный анализ"  Icon="icon/ico.jpg" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Veranda"/>
+            <Setter Property="TextAlignment" Value="Justify"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Veranda"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Veranda"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#FFF9CC6A"/>
+            <Setter Property="Margin" Value="170,0,10,0"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal" Background="AliceBlue">
+            <StackPanel Orientation="Vertical" Name="spMatixPairCorrelation">
+                <Label Content="Матрица парных корреляций"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Name="spDiagramPairCorrelation" Margin="25,0,15,0">
+                <Label Content="Диаграмма корреляционных плеяд"/>
+                <Canvas Name="cnvPair">
+                    <Rectangle Height="3" Canvas.Left="5" Canvas.Top="5" Width="15" Fill="Green"/>
+                    <TextBlock Canvas.Left="25" Text="Сильная связь" FontSize="8"
+                 Foreground="#FF252627"/>
+                    <Rectangle Height="3" Canvas.Left="5" Canvas.Top="15" Width="15" Fill="Orange"/>
+                    <TextBlock Canvas.Left="25" Canvas.Top="10" Text="Умеренная связь" FontSize="8"
+                 Foreground="#FF252627"/>
+                    <Rectangle Height="3" Canvas.Left="5" Canvas.Top="25" Width="15" Fill="Red"/>
+                    <TextBlock Canvas.Left="25" Canvas.Top="20" Text="Слабая связь" FontSize="8"/>
+                    <Ellipse Height="200" Width="200" Stroke="Black" Canvas.Top="47"/>
+                </Canvas>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Name="spPairStudentCriterion">
+                <Label Name="lbPairStudentCriterion" Content="Оценка значимости коэффициента корреляции (З - Значим, Н - незначим)"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Background="AntiqueWhite">
+            <StackPanel Orientation="Vertical" Name="spMatixPrivateCorrelation">
+                <Label Content="Матрица частных корреляций"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Name="spDiagramPrivateCorrelation"  Margin="15,0,15,0">
+                <Label Content="Диаграмма корреляционных плеяд"/>
+                <Canvas Name="cnvPrivate">
+                    <Rectangle Height="3" Canvas.Left="5" Canvas.Top="5" Width="15" Fill="Green"/>
+                    <TextBlock Canvas.Left="25" Text="Сильная связь" FontSize="8"
+                 Foreground="#FF252627"/>
+                    <Rectangle Height="3" Canvas.Left="5" Canvas.Top="15" Width="15" Fill="Orange"/>
+                    <TextBlock Canvas.Left="25" Canvas.Top="10" Text="Умеренная связь" FontSize="8"
+                 Foreground="#FF252627"/>
+                    <Rectangle Height="3" Canvas.Left="5" Canvas.Top="25" Width="15" Fill="Red"/>
+                    <TextBlock Canvas.Left="25" Canvas.Top="20" Text="Слабая связь" FontSize="8"/>
+                    <Ellipse Height="200" Width="200" Stroke="Black" Canvas.Top="47"/>
+                </Canvas>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Name="spChangesCorrelationCoefficient">
+                <Label Content="Изменения коэффициента корреляции (↑ - значение увеличилось, ↓ - значение уменьшилось, ! - знак изменился)"/>
+                <Grid Name="gChangesCorrelationCoefficient"/>
+                <Label Content="Влияние других параметров на связь"/>
+                <CheckBox Name="chStrengthen" Content="Усиливают" Checked="ChStrengthen_Checked" Unchecked="ChStrengthen_Unchecked" Background="Plum"/>
+                <CheckBox Name="chWeaken"  Content="Ослабляют" Checked="ChWeaken_Checked" Unchecked="ChWeaken_Unchecked"  Background="Chartreuse"/>
+            </StackPanel>           
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Background="LemonChiffon">
+            <TextBlock Name="tbMultipleCorrelation" FontSize="12" />
+            <!--<TextBlock Name="tbIndexOfDetermination"/>-->
+            <TextBlock Name="tbFisherCriterion" FontSize="12"/>            
+        </StackPanel>
+    </StackPanel>
+</Window>
